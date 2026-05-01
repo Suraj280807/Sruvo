@@ -1,0 +1,84 @@
+.dashboard-page { display: flex; flex-direction: column; gap: 24px; }
+
+/* Header */
+.dash-header {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+}
+.dash-welcome { font-size: 13px; color: var(--text-muted); }
+.dash-user { font-size: 26px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.5px; }
+
+.dash-header-right { flex-shrink: 0; }
+.dash-pet-widget {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.dash-pet-info { display: flex; align-items: center; gap: 10px; }
+.dash-pet-avatar { font-size: 28px; width: 48px; height: 48px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.dash-pet-name { font-size: 14px; font-weight: 700; }
+.dash-pet-breed { font-size: 11px; color: var(--text-muted); }
+.dash-pet-next { display: flex; gap: 16px; padding: 0 16px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+.dash-pet-next-item { display: flex; align-items: center; gap: 8px; font-size: 20px; }
+
+/* Stats */
+.dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.dash-stat-card {
+  background: var(--stat-bg, var(--bg));
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  transition: all var(--transition);
+  border: 1.5px solid transparent;
+}
+.dash-stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--stat-text, var(--primary)); }
+.dash-stat-icon { font-size: 24px; margin-bottom: 4px; }
+.dash-stat-value { font-size: 28px; font-weight: 900; color: var(--stat-text, var(--text-primary)); }
+.dash-stat-label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.dash-stat-link { font-size: 11px; color: var(--stat-text, var(--primary)); font-weight: 500; margin-top: 6px; }
+
+/* Grid */
+.dash-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Orders */
+.order-list { display: flex; flex-direction: column; gap: 12px; }
+.order-item { display: flex; align-items: center; gap: 12px; }
+.order-emoji { font-size: 22px; width: 40px; height: 40px; background: var(--bg); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.order-info { flex: 1; }
+.order-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.order-date { font-size: 11px; color: var(--text-muted); }
+.order-price { font-size: 14px; font-weight: 700; color: var(--text-primary); flex-shrink: 0; }
+
+/* Bookings */
+.booking-list { display: flex; flex-direction: column; gap: 12px; }
+.booking-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg); border-radius: var(--radius-md); }
+.booking-emoji { font-size: 22px; width: 40px; height: 40px; background: var(--card-bg); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: var(--shadow-sm); }
+.booking-info { flex: 1; }
+.booking-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.booking-date { font-size: 11px; color: var(--text-muted); }
+
+/* Features */
+.dash-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dash-feature-item { display: flex; align-items: center; gap: 12px; }
+.dash-feature-icon { font-size: 22px; width: 40px; height: 40px; background: var(--primary-light); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.dash-feature-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.dash-feature-desc { font-size: 11px; color: var(--text-muted); }
+
+@media (max-width: 1100px) {
+  .dash-features { grid-template-columns: repeat(2, 1fr); }
+  .dash-pet-widget { flex-wrap: wrap; }
+  .dash-pet-next { padding: 8px 0; border: none; flex-wrap: wrap; }
+}
+@media (max-width: 768px) {
+  .dash-header { flex-direction: column; }
+  .dash-stats { grid-template-columns: repeat(2, 1fr); }
+  .dash-grid-2 { grid-template-columns: 1fr; }
+  .dash-features { grid-template-columns: repeat(2, 1fr); }
+}
