@@ -20,12 +20,6 @@ export default function SplashScreen({ onDone }) {
 
   return (
     <div className="splash">
-      <div className="splash-bg">
-        {[...Array(8)].map((_, i) => (
-          <div key={i} className="paw-float" style={{ '--i': i }} />
-        ))}
-      </div>
-
       <div className="splash-content">
         <div className="splash-logo">
           <div className="splash-paw">🐾</div>

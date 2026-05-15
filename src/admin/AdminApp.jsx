@@ -29,7 +29,7 @@ export default function AdminApp() {
     const { data: { session }, error } = await supabase.auth.getSession();
     
     if (error || !session) {
-      navigate('/login');
+      navigate('/admin-login');
       return;
     }
 

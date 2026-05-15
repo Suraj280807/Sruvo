@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 import {
   LayoutDashboard, PawPrint, ShoppingBag, Scissors, Stethoscope,
-  Users, Heart, MapPin, CreditCard, Settings, LogOut,
+  Users, Heart, MapPin, CreditCard, Settings,
   Bell, Search, ShoppingCart, Menu, X, ChevronDown, Trash2
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -44,7 +44,7 @@ export default function Layout() {
   const cartCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
   const wishlistCount = wishlistItems.length;
   const [notifCount] = useState(5);
-  const [userName, setUserName] = useState('Loading...');
+  const [userName, setUserName] = useState('Suraj Patil');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,10 +58,7 @@ export default function Layout() {
     fetchUser();
   }, []);
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    // App.jsx will automatically redirect to /login via onAuthStateChange
-  };
+
 
   return (
     <div className="app-layout">
@@ -100,10 +97,7 @@ export default function Layout() {
                   <span className="sidebar-nav-label">{item.label}</span>
                 </NavLink>
               ))}
-              <button className="sidebar-nav-item logout-btn" onClick={handleLogout}>
-                <span className="sidebar-nav-icon"><LogOut size={18} /></span>
-                <span className="sidebar-nav-label">Logout</span>
-              </button>
+
             </div>
           </nav>
 
@@ -236,10 +230,9 @@ export default function Layout() {
               </div>
               {userDropdownOpen && (
                 <div className="user-dropdown">
-                  <button onClick={handleLogout} className="user-dropdown-item">
-                    <LogOut size={14} />
-                    <span>Logout</span>
-                  </button>
+                  <div className="user-dropdown-item">
+                    <span>Profile (WIP)</span>
+                  </div>
                 </div>
               )}
             </div>

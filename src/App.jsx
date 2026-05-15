@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import SplashScreen from './pages/SplashScreen';
-import LoginPage from './pages/LoginPage';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import MyPetsPage from './pages/MyPetsPage';
@@ -20,24 +19,11 @@ import { WishlistProvider } from './context/WishlistContext';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const [session, setSession] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.classList.add('dark-theme');
     }
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
   }, []);
 
   if (showSplash) {
@@ -49,11 +35,10 @@ function App() {
       <CartProvider>
         <BrowserRouter>
         <Routes>
-        <Route path="/login" element={<AdminLoginPage />} />
+        <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path="/admin-sruvo-123/*" element={<AdminApp />} />
         
         <Route path="/*" element={
-          !session ? <LoginPage onLogin={() => {}} /> : (
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Navigate to="/home" replace />} />
@@ -68,7 +53,6 @@ function App() {
                 <Route path="*" element={<Navigate to="/home" replace />} />
               </Route>
             </Routes>
-          )
         } />
         </Routes>
       </BrowserRouter>

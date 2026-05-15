@@ -31,7 +31,7 @@ const features = [
 ];
 
 export default function DashboardPage() {
-  const [userName, setUserName] = useState('Loading...');
+  const [userName, setUserName] = useState('Suraj Patil');
 
   useEffect(() => {
     const fetchUser = async () => {
